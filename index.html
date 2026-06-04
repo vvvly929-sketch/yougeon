@@ -117,6 +117,12 @@
       margin-bottom: 0;
     }
 
+    .letter-section {
+      padding: 28px 22px 18px;
+      background: rgba(255, 252, 247, 0.96);
+      text-align: left;
+    }
+
     .seal {
       display: grid;
       place-items: center;
@@ -456,6 +462,40 @@
       border-top: 1px solid rgba(163, 129, 83, 0.18);
     }
 
+    @media (max-width: 390px) {
+      .page {
+        padding: 12px 10px 24px;
+      }
+
+      .hero {
+        min-height: 360px;
+        padding: 34px 18px 28px;
+      }
+
+      .eyebrow {
+        font-size: 0.78rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .intro {
+        font-size: 0.92rem;
+        line-height: 1.72;
+      }
+
+      .info-list li {
+        grid-template-columns: 50px 1fr;
+        gap: 10px;
+        padding: 13px 12px;
+      }
+
+      .map-actions {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (min-width: 430px) {
       .page {
         padding-top: 32px;
@@ -463,6 +503,10 @@
 
       .content {
         padding-inline: 28px;
+      }
+
+      .letter-section {
+        padding-inline: 32px;
       }
 
       .gallery-title {
@@ -493,14 +537,17 @@
       <header class="hero">
         <p class="eyebrow">FIRST BIRTHDAY INVITATION</p>
         <h1><span>유건이의 첫번째 생일파티에</span><span>초대합니다.</span></h1>
+        <div class="seal" aria-hidden="true">1st</div>
+      </header>
+
+      <section class="letter-section" aria-label="초대 문구">
         <div class="intro">
           <p>작고 소중한 유건이가 저희 곁에 온 지 어느덧 1년이 되었습니다.</p>
           <p>서툰 부모의 품 안에서 하루하루 웃고 자라며, 우리 가족에게 가장 큰 기쁨과 행복이 되어준 유건이가 첫 번째 생일을 맞이합니다.</p>
           <p>그동안 따뜻한 마음으로 지켜봐 주시고 축복해 주신 분들께 감사한 마음을 전하고자 작은 자리를 마련하였습니다.</p>
           <p>바쁘신 일정에 부담 갖지 마시고, 마음 편히 함께해 주실 수 있다면 유건이의 첫 생일을 따뜻하게 축하해 주시면 감사하겠습니다.</p>
         </div>
-        <div class="seal" aria-hidden="true">1st</div>
-      </header>
+      </section>
 
       <section class="gallery-section" aria-label="유건이 사진">
         <h2 class="gallery-title">유건이의 소중한 순간들</h2>
@@ -524,6 +571,22 @@
           <figure class="photo-card">
             <img src="images/photo-5.jpg" alt="유건이 사진 5" onerror="this.parentElement.classList.add('missing')">
             <span>사진 5</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-6.jpg" alt="유건이 사진 6" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 6</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-7.jpg" alt="유건이 사진 7" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 7</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-8.jpg" alt="유건이 사진 8" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 8</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-9.jpg" alt="유건이 사진 9" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 9</span>
           </figure>
         </div>
       </section>
@@ -645,7 +708,7 @@
   </main>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKaRDmbIdwcaJYG7hIZSmatkTeLj93Oiui8TmDyQBeze31OKeU8DZTkc6TrUnjy23K/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydFG68eHO5A6kwbP6poFAPh9KJoB1Qw3Q4lYxh8yX3GRkfbl6EphJExwZVByHw2lER/exec";
 
     const form = document.getElementById("rsvpForm");
     const submitButton = document.getElementById("submitButton");
