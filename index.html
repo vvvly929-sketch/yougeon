@@ -47,7 +47,7 @@
     .page {
       width: min(100%, 520px);
       margin: 0 auto;
-      padding: 22px 18px 34px;
+      padding: 12px 10px 28px;
     }
 
     .invite {
@@ -61,8 +61,8 @@
 
     .hero {
       position: relative;
-      min-height: 390px;
-      padding: 42px 26px 34px;
+      min-height: 340px;
+      padding: 34px 18px 28px;
       text-align: center;
       background:
         linear-gradient(to bottom, rgba(255, 250, 242, 0.72), rgba(255, 250, 242, 0.97)),
@@ -78,18 +78,18 @@
     }
 
     .eyebrow {
-      margin: 0 0 16px;
+      margin: 0 0 14px;
       color: var(--rose);
-      font-size: 0.86rem;
+      font-size: 0.76rem;
       font-weight: 700;
       letter-spacing: 0.08em;
     }
 
     h1 {
-      margin: 0 auto 24px;
-      max-width: 380px;
+      margin: 0 auto 22px;
+      max-width: 320px;
       color: var(--deep-brown);
-      font-size: clamp(2.05rem, 10vw, 3rem);
+      font-size: 2rem;
       font-weight: 800;
       line-height: 1.24;
       letter-spacing: 0;
@@ -102,10 +102,10 @@
 
     .intro {
       margin: 0 auto;
-      max-width: 380px;
+      max-width: 430px;
       color: var(--brown);
-      font-size: 0.95rem;
-      line-height: 1.78;
+      font-size: 0.92rem;
+      line-height: 1.72;
       word-break: keep-all;
     }
 
@@ -118,7 +118,7 @@
     }
 
     .letter-section {
-      padding: 28px 22px 18px;
+      padding: 26px 18px 16px;
       background: rgba(255, 252, 247, 0.96);
       text-align: left;
     }
@@ -237,7 +237,7 @@
     }
 
     .content {
-      padding: 28px 20px 26px;
+      padding: 26px 16px 24px;
     }
 
     .section-title {
@@ -257,9 +257,9 @@
 
     .info-list li {
       display: grid;
-      grid-template-columns: 64px 1fr;
-      gap: 12px;
-      padding: 14px 15px;
+      grid-template-columns: 1fr;
+      gap: 5px;
+      padding: 15px 14px;
       border: 1px solid rgba(181, 149, 104, 0.28);
       border-radius: 8px;
       background: rgba(247, 237, 220, 0.55);
@@ -267,7 +267,16 @@
 
     .info-label {
       color: var(--rose);
+      font-size: 0.9rem;
       font-weight: 800;
+    }
+
+    .info-value {
+      color: var(--deep-brown);
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.55;
+      word-break: keep-all;
     }
 
     .map-section {
@@ -285,13 +294,13 @@
     .map-frame iframe {
       display: block;
       width: 100%;
-      min-height: 260px;
+      min-height: 220px;
       border: 0;
     }
 
     .map-actions {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 10px;
       margin-top: 12px;
     }
@@ -464,41 +473,44 @@
 
     @media (max-width: 390px) {
       .page {
-        padding: 12px 10px 24px;
+        padding-inline: 8px;
       }
 
       .hero {
-        min-height: 360px;
-        padding: 34px 18px 28px;
-      }
-
-      .eyebrow {
-        font-size: 0.78rem;
+        min-height: 330px;
       }
 
       h1 {
-        font-size: 2rem;
+        font-size: 1.88rem;
       }
 
       .intro {
-        font-size: 0.92rem;
-        line-height: 1.72;
-      }
-
-      .info-list li {
-        grid-template-columns: 50px 1fr;
-        gap: 10px;
-        padding: 13px 12px;
-      }
-
-      .map-actions {
-        grid-template-columns: 1fr;
+        font-size: 0.9rem;
       }
     }
 
     @media (min-width: 430px) {
       .page {
-        padding-top: 32px;
+        padding: 32px 18px 34px;
+      }
+
+      .hero {
+        min-height: 390px;
+        padding: 42px 26px 34px;
+      }
+
+      .eyebrow {
+        font-size: 0.86rem;
+      }
+
+      h1 {
+        max-width: 380px;
+        font-size: clamp(2.05rem, 10vw, 3rem);
+      }
+
+      .intro {
+        font-size: 0.95rem;
+        line-height: 1.78;
       }
 
       .content {
@@ -523,6 +535,16 @@
 
       .video-section {
         padding-inline: 28px;
+      }
+
+      .info-list li {
+        grid-template-columns: 72px 1fr;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .map-actions {
+        grid-template-columns: 1fr 1fr;
       }
 
       .options.two-column {
@@ -603,15 +625,15 @@
         <ul class="info-list">
           <li>
             <span class="info-label">일시</span>
-            <span>2026년 7월 11일 토요일 오후 12시</span>
+            <span class="info-value">2026년 7월 11일 토요일<br>오후 12시</span>
           </li>
           <li>
             <span class="info-label">장소</span>
-            <span>노보텔 앰버서더 수원<br>1층 더스퀘어 사파이어홀</span>
+            <span class="info-value">노보텔 앰버서더 수원<br>1층 더스퀘어 사파이어홀</span>
           </li>
           <li>
             <span class="info-label">주소</span>
-            <span>경기도 수원시 팔달구 덕영대로 902</span>
+            <span class="info-value">경기도 수원시 팔달구<br>덕영대로 902</span>
           </li>
         </ul>
 
@@ -708,7 +730,7 @@
   </main>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbydFG68eHO5A6kwbP6poFAPh9KJoB1Qw3Q4lYxh8yX3GRkfbl6EphJExwZVByHw2lER/exec";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw4fI0rZKuUnJer8EJH5_irAr2zNkVVOTGITPIcfghjS-0pyRxAWMvQ2b9LuNB1AzOT/exec";
 
     const form = document.getElementById("rsvpForm");
     const submitButton = document.getElementById("submitButton");
@@ -741,19 +763,13 @@
         guestCount: formData.get("guestCount"),
         childCount: formData.get("childCount")
       };
+      const submitUrl = `${SCRIPT_URL}?${new URLSearchParams(payload).toString()}`;
 
       submitButton.disabled = true;
       submitButton.textContent = "제출 중입니다...";
 
       try {
-        await fetch(SCRIPT_URL, {
-          method: "POST",
-          mode: "no-cors",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-          body: JSON.stringify(payload)
-        });
+        await fetch(submitUrl, { mode: "no-cors" });
 
         form.reset();
         showMessage("success", "응답해 주셔서 감사합니다. 소중한 마음으로 준비하겠습니다.");
