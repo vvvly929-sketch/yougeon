@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="유건이의 첫번째 생일파티 초대장과 참석 여부 조사">
+  <meta property="og:title" content="유건이의 첫번째 생일파티에 초대합니다.">
+  <meta property="og:description" content="소중한 분들과 함께 따뜻한 시간을 나누고자 합니다.">
+  <meta property="og:type" content="website">
+  <title>유건이의 첫번째 생일파티에 초대합니다.</title>
+  <style>
+    @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
+    :root {
+      --ivory: #fffaf1;
+      --cream: #f7eddc;
+      --beige: #e9d8bd;
+      --sand: #d3b98d;
+      --brown: #7b5f42;
+      --deep-brown: #4b3828;
+      --rose: #c68c75;
+      --white: #ffffff;
+      --shadow: 0 22px 50px rgba(81, 58, 33, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      color: var(--deep-brown);
+      background:
+        linear-gradient(rgba(255, 250, 241, 0.5), rgba(255, 250, 241, 0.9)),
+        url("images/photo-5.jpg") center top / cover fixed;
+      line-height: 1.65;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 22px 18px 34px;
+    }
+
+    .invite {
+      overflow: hidden;
+      border: 1px solid rgba(163, 129, 83, 0.25);
+      border-radius: 8px;
+      background: rgba(255, 252, 247, 0.94);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 390px;
+      padding: 42px 26px 34px;
+      text-align: center;
+      background:
+        linear-gradient(to bottom, rgba(255, 250, 242, 0.72), rgba(255, 250, 242, 0.97)),
+        url("images/photo-1.jpg") center / cover;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 28px 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(124, 95, 66, 0.38), transparent);
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: var(--rose);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0 auto 24px;
+      max-width: 380px;
+      color: var(--deep-brown);
+      font-size: clamp(2.05rem, 10vw, 3rem);
+      font-weight: 800;
+      line-height: 1.24;
+      letter-spacing: 0;
+      word-break: keep-all;
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .intro {
+      margin: 0 auto;
+      max-width: 380px;
+      color: var(--brown);
+      font-size: 0.95rem;
+      line-height: 1.78;
+      word-break: keep-all;
+    }
+
+    .intro p {
+      margin: 0 0 16px;
+    }
+
+    .intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    .seal {
+      display: grid;
+      place-items: center;
+      width: 86px;
+      height: 86px;
+      margin: 28px auto 0;
+      border: 1px solid rgba(123, 95, 66, 0.24);
+      border-radius: 50%;
+      background: rgba(255, 250, 241, 0.76);
+      color: var(--brown);
+      font-size: 1.75rem;
+      font-weight: 800;
+      box-shadow: 0 12px 34px rgba(123, 95, 66, 0.14);
+    }
+
+    .gallery-section {
+      padding: 26px 0 8px;
+      background: linear-gradient(180deg, rgba(255, 250, 241, 0.7), rgba(255, 252, 247, 0.96));
+    }
+
+    .gallery-title {
+      margin: 0 20px 14px;
+      color: var(--deep-brown);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .photo-gallery {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 0 20px 18px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .photo-gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-card {
+      position: relative;
+      flex: 0 0 78%;
+      max-width: 340px;
+      aspect-ratio: 3 / 2;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(181, 149, 104, 0.28);
+      border-radius: 8px;
+      background:
+        linear-gradient(135deg, rgba(255, 250, 241, 0.88), rgba(233, 216, 189, 0.7)),
+        radial-gradient(circle at 70% 20%, rgba(198, 140, 117, 0.28), transparent 35%);
+      box-shadow: 0 16px 32px rgba(81, 58, 33, 0.13);
+      scroll-snap-align: center;
+    }
+
+    .photo-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-card.missing img {
+      display: none;
+    }
+
+    .photo-card span {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      color: rgba(75, 56, 40, 0.72);
+      font-weight: 800;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .photo-card:not(.missing) span {
+      display: none;
+    }
+
+    .video-section {
+      padding: 6px 20px 28px;
+      background: rgba(255, 252, 247, 0.96);
+    }
+
+    .video-title {
+      margin: 0 0 14px;
+      color: var(--deep-brown);
+      font-size: 1.1rem;
+      font-weight: 800;
+    }
+
+    .video-frame {
+      overflow: hidden;
+      border: 1px solid rgba(181, 149, 104, 0.3);
+      border-radius: 8px;
+      background: var(--cream);
+      box-shadow: 0 16px 32px rgba(81, 58, 33, 0.13);
+    }
+
+    .video-frame iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+      background: var(--cream);
+    }
+
+    .content {
+      padding: 28px 20px 26px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: var(--deep-brown);
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 10px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .info-list li {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 12px;
+      padding: 14px 15px;
+      border: 1px solid rgba(181, 149, 104, 0.28);
+      border-radius: 8px;
+      background: rgba(247, 237, 220, 0.55);
+    }
+
+    .info-label {
+      color: var(--rose);
+      font-weight: 800;
+    }
+
+    .map-section {
+      margin: 0 0 30px;
+    }
+
+    .map-frame {
+      overflow: hidden;
+      border: 1px solid rgba(181, 149, 104, 0.28);
+      border-radius: 8px;
+      background: var(--cream);
+      box-shadow: 0 14px 28px rgba(81, 58, 33, 0.1);
+    }
+
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      min-height: 260px;
+      border: 0;
+    }
+
+    .map-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .map-link {
+      display: grid;
+      min-height: 50px;
+      place-items: center;
+      border: 1px solid rgba(123, 95, 66, 0.24);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--brown);
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    form {
+      display: grid;
+      gap: 22px;
+    }
+
+    .field {
+      display: grid;
+      gap: 10px;
+    }
+
+    label,
+    legend {
+      color: var(--deep-brown);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+
+    fieldset {
+      min-width: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      min-height: 54px;
+      padding: 15px 16px;
+      border: 1px solid rgba(123, 95, 66, 0.28);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--deep-brown);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    textarea {
+      min-height: 118px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--sand);
+      box-shadow: 0 0 0 4px rgba(211, 185, 141, 0.22);
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+
+    .option {
+      position: relative;
+      display: flex;
+      min-height: 54px;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border: 1px solid rgba(123, 95, 66, 0.24);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--brown);
+      font-weight: 800;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+    }
+
+    .option input {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .option span {
+      display: block;
+      width: 100%;
+      padding: 14px 12px;
+      word-break: keep-all;
+    }
+
+    .option:has(input:checked) {
+      border-color: var(--brown);
+      background: var(--brown);
+      color: var(--ivory);
+      box-shadow: 0 10px 22px rgba(75, 56, 40, 0.15);
+    }
+
+    .option:active {
+      transform: scale(0.99);
+    }
+
+    .submit-button {
+      width: 100%;
+      min-height: 60px;
+      margin-top: 4px;
+      border: 0;
+      border-radius: 8px;
+      background: var(--deep-brown);
+      color: var(--ivory);
+      font-size: 1.08rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 16px 30px rgba(75, 56, 40, 0.22);
+      transition: transform 0.18s ease, opacity 0.18s ease;
+    }
+
+    .submit-button:active {
+      transform: translateY(1px);
+    }
+
+    .submit-button:disabled {
+      cursor: wait;
+      opacity: 0.72;
+    }
+
+    .message {
+      display: none;
+      padding: 15px 16px;
+      border-radius: 8px;
+      font-weight: 800;
+      text-align: center;
+      word-break: keep-all;
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .message.success {
+      border: 1px solid rgba(112, 143, 88, 0.28);
+      background: #f0f6e9;
+      color: #516b3b;
+    }
+
+    .message.error {
+      border: 1px solid rgba(180, 95, 78, 0.28);
+      background: #fff0eb;
+      color: #9a493a;
+    }
+
+    .footer {
+      padding: 22px 20px 28px;
+      color: rgba(75, 56, 40, 0.68);
+      font-weight: 700;
+      text-align: center;
+      border-top: 1px solid rgba(163, 129, 83, 0.18);
+    }
+
+    @media (min-width: 430px) {
+      .page {
+        padding-top: 32px;
+      }
+
+      .content {
+        padding-inline: 28px;
+      }
+
+      .gallery-title {
+        margin-inline: 28px;
+      }
+
+      .photo-gallery {
+        padding-inline: 28px;
+      }
+
+      .photo-card {
+        flex-basis: 72%;
+      }
+
+      .video-section {
+        padding-inline: 28px;
+      }
+
+      .options.two-column {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="invite" aria-label="돌잔치 초대장">
+      <header class="hero">
+        <p class="eyebrow">FIRST BIRTHDAY INVITATION</p>
+        <h1><span>유건이의 첫번째 생일파티에</span><span>초대합니다.</span></h1>
+        <div class="intro">
+          <p>작고 소중한 유건이가 저희 곁에 온 지 어느덧 1년이 되었습니다.</p>
+          <p>서툰 부모의 품 안에서 하루하루 웃고 자라며, 우리 가족에게 가장 큰 기쁨과 행복이 되어준 유건이가 첫 번째 생일을 맞이합니다.</p>
+          <p>그동안 따뜻한 마음으로 지켜봐 주시고 축복해 주신 분들께 감사한 마음을 전하고자 작은 자리를 마련하였습니다.</p>
+          <p>바쁘신 일정에 부담 갖지 마시고, 마음 편히 함께해 주실 수 있다면 유건이의 첫 생일을 따뜻하게 축하해 주시면 감사하겠습니다.</p>
+        </div>
+        <div class="seal" aria-hidden="true">1st</div>
+      </header>
+
+      <section class="gallery-section" aria-label="유건이 사진">
+        <h2 class="gallery-title">유건이의 소중한 순간들</h2>
+        <div class="photo-gallery">
+          <figure class="photo-card">
+            <img src="images/photo-1.jpg" alt="유건이 사진 1" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 1</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-2.jpg" alt="유건이 사진 2" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 2</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-3.jpg" alt="유건이 사진 3" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 3</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-4.jpg" alt="유건이 사진 4" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 4</span>
+          </figure>
+          <figure class="photo-card">
+            <img src="images/photo-5.jpg" alt="유건이 사진 5" onerror="this.parentElement.classList.add('missing')">
+            <span>사진 5</span>
+          </figure>
+        </div>
+      </section>
+
+      <section class="video-section" aria-label="유건이 영상">
+        <h2 class="video-title">유건이의 첫 생일 영상</h2>
+        <div class="video-frame">
+          <iframe src="https://www.youtube.com/embed/WrStYbz1a0k" title="유건이의 첫 생일 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <div class="content">
+        <h2 class="section-title">돌잔치 정보</h2>
+        <ul class="info-list">
+          <li>
+            <span class="info-label">일시</span>
+            <span>2026년 7월 11일 토요일 오후 12시</span>
+          </li>
+          <li>
+            <span class="info-label">장소</span>
+            <span>노보텔 앰버서더 수원<br>1층 더스퀘어 사파이어홀</span>
+          </li>
+          <li>
+            <span class="info-label">주소</span>
+            <span>경기도 수원시 팔달구 덕영대로 902</span>
+          </li>
+        </ul>
+
+        <section class="map-section" aria-label="오시는 길">
+          <h2 class="section-title">오시는 길</h2>
+          <div class="map-frame">
+            <iframe title="노보텔 앰버서더 수원 위치" src="https://www.google.com/maps?q=%EA%B2%BD%EA%B8%B0%EB%8F%84%20%EC%88%98%EC%9B%90%EC%8B%9C%20%ED%8C%94%EB%8B%AC%EA%B5%AC%20%EB%8D%95%EC%98%81%EB%8C%80%EB%A1%9C%20902%20%EB%85%B8%EB%B3%B4%ED%85%94%20%EC%95%B0%EB%B2%84%EC%84%9C%EB%8D%94%20%EC%88%98%EC%9B%90&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="map-actions">
+            <a class="map-link" href="https://map.naver.com/p/search/%EB%85%B8%EB%B3%B4%ED%85%94%20%EC%95%B0%EB%B2%84%EC%84%9C%EB%8D%94%20%EC%88%98%EC%9B%90" target="_blank" rel="noopener">네이버 지도</a>
+            <a class="map-link" href="https://map.kakao.com/link/search/%EB%85%B8%EB%B3%B4%ED%85%94%20%EC%95%B0%EB%B2%84%EC%84%9C%EB%8D%94%20%EC%88%98%EC%9B%90" target="_blank" rel="noopener">카카오맵</a>
+          </div>
+        </section>
+
+        <form id="rsvpForm">
+          <div class="field">
+            <label for="name">성함</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="성함을 입력해 주세요" required>
+          </div>
+
+          <fieldset class="field">
+            <legend>참석 여부</legend>
+            <div class="options">
+              <label class="option">
+                <input type="radio" name="attendance" value="참석합니다" required>
+                <span>참석합니다</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="attendance" value="참석이 어렵습니다">
+                <span>참석이 어렵습니다</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="attendance" value="아직 미정입니다">
+                <span>아직 미정입니다</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>참석 인원</legend>
+            <div class="options two-column">
+              <label class="option">
+                <input type="radio" name="guestCount" value="1명" required>
+                <span>1명</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="guestCount" value="2명">
+                <span>2명</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="guestCount" value="3명">
+                <span>3명</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="guestCount" value="4명 이상">
+                <span>4명 이상</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="guestCount" value="해당 없음">
+                <span>해당 없음</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>동반 아동 수</legend>
+            <div class="options two-column">
+              <label class="option">
+                <input type="radio" name="childCount" value="없음" required>
+                <span>없음</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="childCount" value="1명">
+                <span>1명</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="childCount" value="2명">
+                <span>2명</span>
+              </label>
+              <label class="option">
+                <input type="radio" name="childCount" value="3명 이상">
+                <span>3명 이상</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <p id="formMessage" class="message" role="status" aria-live="polite"></p>
+          <button id="submitButton" class="submit-button" type="submit">참석 여부 제출하기</button>
+        </form>
+      </div>
+
+      <footer class="footer">Thank you for celebrating with us</footer>
+    </section>
+  </main>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzKaRDmbIdwcaJYG7hIZSmatkTeLj93Oiui8TmDyQBeze31OKeU8DZTkc6TrUnjy23K/exec";
+
+    const form = document.getElementById("rsvpForm");
+    const submitButton = document.getElementById("submitButton");
+    const formMessage = document.getElementById("formMessage");
+    const defaultButtonText = submitButton.textContent;
+
+    function showMessage(type, text) {
+      formMessage.className = `message ${type} show`;
+      formMessage.textContent = text;
+    }
+
+    function hideMessage() {
+      formMessage.className = "message";
+      formMessage.textContent = "";
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      hideMessage();
+
+      if (!SCRIPT_URL || SCRIPT_URL.includes("여기에_구글_앱스스크립트")) {
+        showMessage("error", "Apps Script 웹앱 URL을 먼저 입력해 주세요.");
+        return;
+      }
+
+      const formData = new FormData(form);
+      const payload = {
+        name: formData.get("name"),
+        attendance: formData.get("attendance"),
+        guestCount: formData.get("guestCount"),
+        childCount: formData.get("childCount")
+      };
+
+      submitButton.disabled = true;
+      submitButton.textContent = "제출 중입니다...";
+
+      try {
+        await fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        form.reset();
+        showMessage("success", "응답해 주셔서 감사합니다. 소중한 마음으로 준비하겠습니다.");
+      } catch (error) {
+        showMessage("error", "응답 저장 중 문제가 발생했습니다. 다시 시도해 주세요.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = defaultButtonText;
+      }
+    });
+  </script>
+</body>
+</html>
