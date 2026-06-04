@@ -279,6 +279,19 @@
       word-break: keep-all;
     }
 
+    .info-value .line {
+      display: block;
+    }
+
+    .info-note {
+      display: block;
+      margin-top: 4px;
+      color: rgba(75, 56, 40, 0.68);
+      font-size: 0.88rem;
+      font-weight: 600;
+      line-height: 1.5;
+    }
+
     .map-section {
       margin: 0 0 30px;
     }
@@ -625,15 +638,26 @@
         <ul class="info-list">
           <li>
             <span class="info-label">일시</span>
-            <span class="info-value">2026년 7월 11일 토요일<br>오후 12시</span>
+            <span class="info-value">
+              <span class="line">2026년 7월 11일 토요일</span>
+              <span class="line">PM 12:00</span>
+              <span class="info-note">* 해당 시간부터 입장 가능합니다.</span>
+            </span>
           </li>
           <li>
             <span class="info-label">장소</span>
-            <span class="info-value">노보텔 앰버서더 수원<br>1층 더스퀘어 사파이어홀</span>
+            <span class="info-value">
+              <span class="line">노보텔 앰버서더 수원</span>
+              <span class="line">1층 더스퀘어 사파이어홀</span>
+            </span>
           </li>
           <li>
             <span class="info-label">주소</span>
-            <span class="info-value">경기도 수원시 팔달구<br>덕영대로 902</span>
+            <span class="info-value">
+              <span class="line">수원시 팔달구</span>
+              <span class="line">덕영대로 902</span>
+              <span class="info-note">* 주차는 3시간 제공됩니다.</span>
+            </span>
           </li>
         </ul>
 
